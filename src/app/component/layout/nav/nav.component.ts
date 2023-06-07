@@ -18,7 +18,7 @@ export class NavComponent {
   constructor(public authService:AuthenticationService,
     private router:Router,private userService:UserService,public translate:TranslateService){
          //language
-     translate.addLangs(['en','ar'])
+     translate.addLangs([ 'en','ar'])
      translate.setDefaultLang('en')
     }
 
