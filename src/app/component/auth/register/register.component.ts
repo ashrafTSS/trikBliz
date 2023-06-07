@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -8,6 +8,11 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
+import { switchMap } from 'rxjs';
+import { AuthenticationService } from 'src/app/service/authentication.service';
+import { UserService } from 'src/app/service/user.service';
 
 
 export function passwordsMatchValidator(): ValidatorFn {
@@ -30,6 +35,7 @@ export function passwordsMatchValidator(): ValidatorFn {
 })
 export class RegisterComponent implements OnInit {
 
+
   signUpForm = this.fb.group(
     {
       name: ['', Validators.required],
@@ -40,11 +46,11 @@ export class RegisterComponent implements OnInit {
     { validators: passwordsMatchValidator() }
   );
 
-  constructor(private fb: NonNullableFormBuilder){}
+  constructor(private fb: NonNullableFormBuilder,
+    private toast:HotToastService,private authService:AuthenticationService,
+    private router:Router,private userService:UserService){}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   get email() {
     return this.signUpForm.get('email');
@@ -63,6 +69,22 @@ export class RegisterComponent implements OnInit {
   }
 
   //register
-  submit(){}
+  submit(){
+    if(!this.signUpForm.valid) return;
+    const {name,email,password} = this.signUpForm.value;
+   this.authService.signUp(email,password).pipe(
+    switchMap(({ user: { uid } }) =>
+    this.userService.addUser({ uid, email, displayName: name })
+  ),
+    this.toast.observe({
+      success :'congrats! You are all signed up',
+      loading :'Signing in',
+      error:({message}) =>'${message}'
+    })
+   ).subscribe(()=>{
+    this.router.navigate((['/auth/login']))
+   })
+  }
+
 
 }

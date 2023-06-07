@@ -11,14 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
-import { DashboardComponent } from './component/auth/dashboard/dashboard.component';
-
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { LayoutModule } from './component/layout/layout.module';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-
   ],
 
   imports: [
@@ -27,10 +26,13 @@ import { DashboardComponent } from './component/auth/dashboard/dashboard.compone
     BrowserAnimationsModule,
     SharedModule,
     MatFormFieldModule,
+    LayoutModule,
     MatInputModule,
     HotToastModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
