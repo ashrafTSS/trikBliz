@@ -1,0 +1,87 @@
+{
+  "nav":{
+    "link1":"Home",
+    "link2":"Resume",
+    "link3":"Projects",
+    "link4":"Contact"
+  },
+
+  "home":{
+      "div1":"Design",
+      "div2":"Development",
+      "div3":"I can help your business to",
+      "h1":"Get online and grow fast",
+      "res-btn":"Resume",
+      "pro-btn":"Projects"
+  },
+
+  "about":{
+    "h2":"About Me",
+    "p1":"My name is Ashraf ali and I help brands grow.",
+    "p2":"To Work in a health, innovative and challenging environment extracting the best out of me. which is conductive to learn ang grow at proessional as well person level thery by directing in my future endeavours as an asset to the organisation."
+  },
+
+  "resume":{
+    "h1":"Resume",
+    "h2":"Experience",
+    "down":" Download Resume",
+    "pres":"Present",
+    "web":"Web Developer",
+    "tec":"Tecnovators Software Solutions",
+    "add":"Anna Salai, Chennai",
+    "p":"Tecnovators has giving me chance to learn Angular and i learned so many Languages like javascript,wordpress and tailwind css.",
+    "p2":"I design footer page of GLT in live project and also design landing page of cannoah in tecnovators",
+    "edu":"Education",
+    "moh":"Mohammed Sathak College",
+    "sir":"Siruseri,Chennai",
+    "mca":"MCA",
+    "gdp":"GDP",
+    "mca-g":"Complete MCA in Mohammed sathak AJ college of Engineering, Chennai and GDP is 78%.",
+    "is":"Islamiah College",
+    "van":"Vaniyambadi,Tirupattur",
+    "bca":"BCA",
+    "bca-g":"Complete BCA in Vaniyambadi College and GDP is 75%",
+    "p-skill":"Professional Skills",
+    "wp":"Wordpress Developer",
+    "fig":"Figma",
+    "xd":"Adobe XD",
+    "ui":"User Interface Design",
+    "tcs":"Tailwind CSS",
+    "lng":"Languages",
+    "html":"HTML",
+    "css":"CSS",
+    "js":"JavaScript",
+    "ang":"Angular",
+    "tsc":"TypeScript",
+    "bt":"Bootstrap"
+  },
+
+  "project":{
+    "h1":"Projects",
+    "glt":"Project GLT",
+    "glt-p":"I design footer page of GLT in live project as per as design.",
+    "cann":"Project Cannoah",
+    "cann-p":"design landing page of cannoah in and terms and condition",
+    "let":"Let's build something together",
+    "con":"Contact me"
+  },
+
+  "contact":{
+    "h1":"Get in touch",
+    "p":"Let's work together!",
+    "fn":"Full name",
+    "em":"Email address",
+    "ph":"Phone number",
+    "msg":"Message",
+    "sub":"Submit"
+  },
+
+  "footer":{
+    "cpy":"Copyright",
+    "myr":"myResume",
+    "pr":"Privacy",
+    "tm":"Terms",
+    "cnt":"Contact"
+  }
+
+}

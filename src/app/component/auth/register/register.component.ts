@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
     this.toast.observe({
       success :'congrats! You are all signed up',
       loading :'Signing in',
-      error:({message}) =>'${message}'
+      error:({ message }) => `There was an error: ${message} `
     })
    ).subscribe(()=>{
     this.router.navigate((['/auth/login']))

@@ -15,6 +15,11 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { LayoutModule } from './component/layout/layout.module';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
+//ngx-translate
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { TranslateLoader,TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +34,14 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     LayoutModule,
     MatInputModule,
     HotToastModule.forRoot(),
+    HttpClientModule,
+    TranslateModule.forRoot({
+     loader:{
+      provide:TranslateLoader,
+      useFactory: httpTranslateLoader,
+      deps:[HttpClient]
+     }
+    }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
@@ -38,3 +51,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//AOT compilation support
+export function httpTranslateLoader(http:HttpClient){
+  return new TranslateHttpLoader(http)
+}

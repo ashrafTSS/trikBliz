@@ -17,6 +17,11 @@ export class AuthenticationService {
     return from(signInWithEmailAndPassword(this.auth,username,password))
   }
 
+  //loggeddIn
+  loggedIn(){
+    return
+  }
+
   //logout
   logout():Observable<any>{
     return from(this.auth.signOut())

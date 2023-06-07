@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.toast.observe({
           success: 'Logged in successfully',
           loading: 'Logging in...',
-          error:({message}) =>'${message}'
+          error:({ message }) => `There was an error: ${message} `
         })
       )
       .subscribe((res) => {

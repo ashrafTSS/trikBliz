@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ProjectComponent } from './project/project.component';
 import { ContactComponent } from './contact/contact.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ContactComponent } from './contact/contact.component';
 
   imports: [
     CommonModule,
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    TranslateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
