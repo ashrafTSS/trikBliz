@@ -11,7 +11,7 @@ import { ResumeComponent } from './resume/resume.component';
 import { ProjectComponent } from './project/project.component';
 import { ContactComponent } from './contact/contact.component';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,9 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

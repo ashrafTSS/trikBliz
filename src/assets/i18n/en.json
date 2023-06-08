@@ -1,5 +1,6 @@
 {
   "nav":{
+    "title":"myResume",
     "link1":"Home",
     "link2":"Resume",
     "link3":"Projects",
@@ -58,6 +59,8 @@
 
   "project":{
     "h1":"Projects",
+    "h2":"Projects",
+    "down":" Add Project",
     "glt":"Project GLT",
     "glt-p":"I design footer page of GLT in live project as per as design.",
     "cann":"Project Cannoah",

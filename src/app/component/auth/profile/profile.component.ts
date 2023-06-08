@@ -82,4 +82,5 @@ export class ProfileComponent implements OnInit {
   back(){
     this.router.navigate(['layout/home'])
   }
+
 }
