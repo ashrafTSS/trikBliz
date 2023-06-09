@@ -27,6 +27,11 @@ export class NavComponent {
       title: 'Arabic',
       image: '/assets/image/sa.svg',
     },
+    {
+      value: 'tn',
+      title: 'India',
+      image: '/assets/image/in.svg',
+    },
   ];
 
   constructor(public authService:AuthenticationService,
@@ -57,7 +62,16 @@ export class NavComponent {
       this.translate.use(lang);
       this.lang = lang;
       localStorage.setItem('lang', lang);
-    } else {
+    }
+    else if (lang === 'tn') {
+      this.langIcon = 'in.svg';
+      this.language = 'India';
+      this.translate.setDefaultLang(lang);
+      this.translate.use(lang);
+      this.lang = lang;
+      localStorage.setItem('lang', lang);
+    }
+    else  {
       this.langIcon = 'us.svg';
       this.language = 'English';
       this.translate.setDefaultLang(lang);
