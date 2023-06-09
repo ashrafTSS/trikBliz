@@ -10,59 +10,42 @@
           </div>
           <div class="row gx-5 justify-content-center">
               <div class="col-lg-8 col-xl-6">
-                  <!-- * * * * * * * * * * * * * * *-->
-                  <!-- * * SB Forms Contact Form * *-->
-                  <!-- * * * * * * * * * * * * * * *-->
-                  <!-- This form is pre-integrated with SB Forms.-->
-                  <!-- To make this form functional, sign up at-->
-                  <!-- https://startbootstrap.com/solution/contact-forms-->
-                  <!-- to get an API token!-->
-                  <form id="contactForm" [formGroup]="ContactForm" (ngSubmit)="saveContact()">
-                      <!-- Name input-->
-                      <div class="form-floating mb-3">
-                          <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required"  formControlName="fullName" />
-                          <label for="name">{{'contact.fn' | translate}}</label>
-                          <div class="invalid-feedback" *ngIf="fullName?.errors?.['required']">A name is required.</div>
-                      </div>
-                      <!-- Email address input-->
-                      <div class="form-floating mb-3">
-                          <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email"  formControlName="emailAddress" />
-                          <label for="email">{{'contact.em' | translate}}</label>
-                          <div class="invalid-feedback" *ngIf="emailAddress?.errors?.['required']">An email is required.</div>
-                          <div class="invalid-feedback" *ngIf="emailAddress?.errors?.['emailAddress']">Email is not valid.</div>
-                      </div>
-                      <!-- Phone number input-->
-                      <div class="form-floating mb-3">
-                          <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required"   formControlName="phone"/>
-                          <label for="phone">{{'contact.ph' | translate}}</label>
-                          <div class="invalid-feedback" *ngIf="phone?.errors?.['required']">A phone number is required.</div>
-                      </div>
-                      <!-- Message input-->
-                      <div class="form-floating mb-3">
-                          <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"  formControlName="message"></textarea>
-                          <label for="message">{{'contact.msg' | translate}}</label>
-                          <div class="invalid-feedback" *ngIf="message?.errors?.['required']">A message is required.</div>
-                      </div>
-                      <!-- Submit success message-->
-                      <!---->
-                      <!-- This is what your users will see when the form-->
-                      <!-- has successfully submitted-->
-                      <div class="d-none" id="submitSuccessMessage">
-                          <div class="text-center mb-3">
-                              <div class="fw-bolder">Form submission successful!</div>
-                              To activate this form, sign up at
-                              <br />
-                              <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                          </div>
-                      </div>
-                      <!-- Submit error message-->
-                      <!---->
-                      <!-- This is what your users will see when there is-->
-                      <!-- an error submitting the form-->
-                      <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                      <!-- Submit Button-->
-                      <div class="d-grid"><button class="btn btn-primary btn-lg " id="submitButton" type="submit">{{'contact.sub' | translate}}</button></div>
-                  </form>
+
+                  <form  [formGroup]="contactForm" (ngSubmit)="saveContact()" >
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" type="text" placeholder="Enter your name..."  formControlName="name" />
+                        <label for="name">{{'contact.fn' | translate}}</label>
+                        <div class="text-danger" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched && contactForm.get('name')?.errors?.['required']">
+                          Name is required.</div>
+                    </div>
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" type="email" placeholder="name@example.com"   formControlName="email" />
+                        <label for="email">{{'contact.em' | translate}}</label>
+                        <div class="text-danger"  *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']">
+                          Email is required.</div>
+                          <div  class="text-danger" *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                    </div>
+                    <!-- Phone number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"  formControlName="phone"/>
+                        <label for="phone">{{'contact.ph' | translate}}</label>
+                         <div class="text-danger"  *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched && contactForm.get('phone')?.errors?.['required']">
+                          Phone is required.</div>
+                    </div>
+                    <!-- Message input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" formControlName="message"></textarea>
+                        <label for="message">{{'contact.msg' | translate}}</label>
+                        <div  class="text-danger" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched && contactForm.get('message')?.errors?.['required']">
+                          Message is required.</div>
+                    </div>
+
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <!-- Submit Button-->
+                    <div class="d-grid"><button class="btn btn-primary btn-lg " id="submitButton" type="submit" [disabled]="contactForm.invalid">{{'contact.sub' | translate}}</button></div>
+                </form>
               </div>
           </div>
       </div>
