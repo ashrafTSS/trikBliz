@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/service/authentication.service';
@@ -10,6 +10,12 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+
+  //show navbar when profile edit
+  activePage: string = '';
+
+  //profile click on navbar show
+
 
   //show login's name
   user$ = this.userService.currentUserProfile$
@@ -81,6 +87,10 @@ export class NavComponent {
     }
   }
 
+  //show navbar when click on profile button
+
 
 
 }
+
+

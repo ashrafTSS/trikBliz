@@ -12,6 +12,7 @@ import { ProjectComponent } from './project/project.component';
 import { ContactComponent } from './contact/contact.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectaddComponent } from './projectadd/projectadd.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ResumeComponent,
     ProjectComponent,
     ContactComponent,
+    ProjectaddComponent,
   ],
 
   imports: [

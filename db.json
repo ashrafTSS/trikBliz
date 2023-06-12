@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "projectname": "s",
+      "projectinfo": "s",
+      "profile": "profile.png",
+      "id": 1
+    },
+    {
+      "projectname": "glt",
+      "projectinfo": "design basic footer",
+      "profile": "image-placeholder.png",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

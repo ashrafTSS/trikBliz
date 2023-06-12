@@ -10,6 +10,7 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 import { ImageUploadService } from 'src/app/service/image-upload.service';
 import { UserService } from 'src/app/service/user.service';
 
+
 @UntilDestroy()
 @Component({
   selector: 'app-profile',
@@ -33,7 +34,8 @@ export class ProfileComponent implements OnInit {
     private toast:HotToastService,
     private fb: NonNullableFormBuilder,
     private userService:UserService,
-    private router:Router){}
+    private router:Router,
+    ){}
 
     ngOnInit(): void{
       this.userService.currentUserProfile$.pipe(
@@ -82,5 +84,6 @@ export class ProfileComponent implements OnInit {
   back(){
     this.router.navigate(['layout/home'])
   }
+
 
 }

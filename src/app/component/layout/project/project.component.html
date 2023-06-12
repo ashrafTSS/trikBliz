@@ -6,7 +6,7 @@
       </div>
 
       <!-- add btn  -->
-        <div class="d-flex align-items-center justify-content-between mb-4">
+        <!-- <div class="d-flex align-items-center justify-content-between mb-4">
           <div>
             <h2 class="text-primary fw-bolder mb-0" style="padding-left: 143px;">{{'project.h2' | translate}}</h2>
           </div>
@@ -16,37 +16,82 @@
               {{'project.down' | translate}}
           </a>
           </div>
-        </div>
-      <div class="row gx-5 justify-content-center">
-          <div class="col-lg-11 col-xl-9 col-xxl-8">
-              <!-- Project Card 1-->
-              <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                  <div class="card-body p-0">
-                      <div class="d-flex align-items-center">
-                          <div class="p-5">
-                              <h2 class="fw-bolder">{{'project.glt' | translate}}</h2>
-                              <p>{{'project.glt-p' | translate}}</p>
-                          </div>
-                          <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
-                      </div>
-                  </div>
-              </div>
-              <!-- Project Card 2-->
-              <div class="card overflow-hidden shadow rounded-4 border-0">
-                  <div class="card-body p-0">
-                      <div class="d-flex align-items-center">
-                          <div class="p-5">
-                              <h2 class="fw-bolder">{{'project.cann' | translate}}</h2>
-                              <p>{{'project.cann-p' | translate}} </p>
-                          </div>
-                          <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
-                      </div>
-                  </div>
-              </div>
+        </div> -->
+
+        <div class="toolbar">
+
+          <div class="add-employee">
+
+            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+              data-bs-target="#exampleModal" #addEmployeeButton><i class="bi bi-plus-circle-fill"></i> Add Project</button>
           </div>
+
+          <div class="search-employees">
+            <input type="search" class="form-control" placeholder="Search Project"
+               #searchInput>
+          </div>
+
+        </div>
+
+         <!-- AREA TO DISPLAY ALL THE EMPLOYEES -->
+      <div class="employees" >
+        <div class="row mt-5" *ngIf="projects.length == 0">
+          <div class="col text-center">
+            <span class="text-secondary fs-3 fw-bold fst-italic">There are no project Added!</span>
+          </div>
+        </div>
+
+        <div class="row mt-4" *ngFor="let project of projectsToDisplay;let ei=index">
+          <div class="col">
+              <app-projectadd  [project]="project" (onRemoveProject)="removeProject($event)" (onEditProject)="editProject($event)"></app-projectadd>
+          </div>
+        </div>
+
       </div>
+
+
   </div>
 </section>
+
+<!-- modal  -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" >
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Project Info</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form  -->
+        <form [formGroup]="projectFrom">
+          <div class="mb-3">
+            <label  class="form-label">Enter Project Name</label>
+            <input type="text" class="form-control"  aria-describedby="emailHelp"  formControlName="projectname">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Enter Project Details</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="projectinfo"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="profile" class="form-label">Upload image</label>
+            <input type="file" class="form-control" id="profile" #fileInput>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addProject()">Insert</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- Call to action section-->
 <section class="py-5 bg-gradient-primary-to-secondary text-white">
   <div class="container px-5 my-5">
@@ -56,3 +101,4 @@
       </div>
   </div>
 </section>
+
