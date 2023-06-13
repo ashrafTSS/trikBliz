@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { GlobaleventsmanagerService } from 'src/app/service/globaleventsmanager.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -10,12 +11,6 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-
-  //show navbar when profile edit
-  activePage: string = '';
-
-  //profile click on navbar show
-
 
   //show login's name
   user$ = this.userService.currentUserProfile$
@@ -41,7 +36,9 @@ export class NavComponent {
   ];
 
   constructor(public authService:AuthenticationService,
-    private router:Router,private userService:UserService,public translate:TranslateService){
+    private router:Router,private userService:UserService,public translate:TranslateService,
+    private globalEvent:GlobaleventsmanagerService){
+
 
          //language
     //  translate.addLangs([ 'en','ar'])
@@ -88,8 +85,10 @@ export class NavComponent {
   }
 
   //show navbar when click on profile button
+  onProfile(){
+    this.router.navigate(['/layout/profile'])
 
-
+  }
 
 }
 

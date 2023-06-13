@@ -13,6 +13,12 @@ import { ContactComponent } from './contact/contact.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectaddComponent } from './projectadd/projectadd.component';
+import { ProfileComponent } from './layout/profile/profile.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon'
+
 
 @NgModule({
   declarations: [
@@ -25,6 +31,8 @@ import { ProjectaddComponent } from './projectadd/projectadd.component';
     ProjectComponent,
     ContactComponent,
     ProjectaddComponent,
+    ProfileComponent
+
   ],
 
   imports: [
@@ -32,7 +40,11 @@ import { ProjectaddComponent } from './projectadd/projectadd.component';
     LayoutRoutingModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

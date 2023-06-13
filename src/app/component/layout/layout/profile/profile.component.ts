@@ -7,6 +7,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { concatMap } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { GlobaleventsmanagerService } from 'src/app/service/globaleventsmanager.service';
 import { ImageUploadService } from 'src/app/service/image-upload.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -35,6 +36,7 @@ export class ProfileComponent implements OnInit {
     private fb: NonNullableFormBuilder,
     private userService:UserService,
     private router:Router,
+
     ){}
 
     ngOnInit(): void{

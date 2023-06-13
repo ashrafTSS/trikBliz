@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
 import { Project } from 'src/app/models/project.module';
 
 @Component({
@@ -13,7 +14,7 @@ export class ProjectaddComponent implements OnInit {
   @Output() onRemoveProject = new EventEmitter<number>()
   @Output() onEditProject = new EventEmitter<number>()
 
-constructor(){
+constructor(private toast:HotToastService){
   this.project = {
     projectname: '',
     projectinfo: '',
@@ -31,6 +32,10 @@ constructor(){
 
   //delete
   deleteProject(){
-    this.onRemoveProject.emit(this.project.id)
+const confirmed = confirm("Are you sure you want to remove this project?");
+if (confirmed) {
+  this.onRemoveProject.emit(this.project.id);
+}
+
   }
 }

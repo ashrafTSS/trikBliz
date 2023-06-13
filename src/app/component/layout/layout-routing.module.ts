@@ -4,13 +4,17 @@ import { HomeComponent } from './home/home.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ProjectComponent } from './project/project.component';
 import { ContactComponent } from './contact/contact.component';
+import { ProfileComponent } from './layout/profile/profile.component';
+
 
 
 const routes: Routes = [
 {path:'home',component:HomeComponent},
 {path:'resume',component:ResumeComponent},
 {path:'project',component:ProjectComponent},
-{path:'contact',component:ContactComponent}
+{path:'contact',component:ContactComponent},
+{path:'profile',component:ProfileComponent}
+
 
   ]
 

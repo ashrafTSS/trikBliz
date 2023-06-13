@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { TranslateService } from '@ngx-translate/core';
 import { Project } from 'src/app/models/project.module';
 import { ProjectService } from 'src/app/service/project.service';
@@ -21,7 +22,7 @@ export class ProjectComponent implements OnInit,AfterViewInit {
   projectsToDisplay: Project[] = [];
 
   constructor(private router:Router,private translate:TranslateService,private fb: FormBuilder
-    ,private projectService:ProjectService){
+    ,private projectService:ProjectService,private toast:HotToastService){
     this.projectFrom = fb.group({});
     this.projects = [];
     this.projectsToDisplay = this.projects;
@@ -61,6 +62,7 @@ export class ProjectComponent implements OnInit,AfterViewInit {
       profile: this.fileInput.nativeElement.files[0]?.name,
     };
     this.projectService.postProject(projects).subscribe((res) => {
+      this.toast.success("Successfully added project!!")
       this.projects.unshift(res);
       this.clearForm();
     });
@@ -109,4 +111,21 @@ export class ProjectComponent implements OnInit,AfterViewInit {
     this.removeProject(event);
     this.addEmployeeButton.nativeElement.click();
   }
+
+    //search project
+    searchProject(event: any) {
+      let filteredProject: Project[] = [];
+
+      if (event === '') {
+        this.projectsToDisplay = this.projects;
+      } else {
+        filteredProject = this.projects.filter((val, index) => {
+          let targetKey = val.projectname.toLowerCase();
+          // let targetKey = val.projectname.toLowerCase() + '' + val.projectinfo.toLowerCase();
+          let searchKey = event.toLowerCase();
+          return targetKey.includes(searchKey);
+        });
+        this.projectsToDisplay = filteredProject;
+      }
+    }
 }

@@ -9,14 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { ProfileComponent } from '../profile/profile.component';
 import { MatIconModule } from '@angular/material/icon'
+
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent,
   ],
 
   imports: [
