@@ -23,11 +23,11 @@
           <div class="add-employee">
 
             <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-              data-bs-target="#exampleModal" #addEmployeeButton><i class="bi bi-plus-circle-fill"></i> Add Project</button>
+              data-bs-target="#exampleModal" #addEmployeeButton><i class="bi bi-plus-circle-fill"></i> {{'project.down' | translate}}</button>
           </div>
 
           <div class="search-employees">
-            <input type="search" class="form-control" placeholder="Search Project"
+            <input type="search" class="form-control" placeholder="{{'project.search' | translate}}"
             #searchInput (input)="searchProject(searchInput.value)">
           </div>
 
@@ -37,7 +37,7 @@
       <div class="employees" >
         <div class="row mt-5" *ngIf="projects.length == 0">
           <div class="col text-center">
-            <span class="text-secondary fs-3 fw-bold fst-italic">There are no project Added!</span>
+            <span class="text-secondary fs-3 fw-bold fst-italic">{{'project.err' | translate}}</span>
           </div>
         </div>
 
@@ -64,28 +64,28 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Project Info</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{'project.pro-in' | translate}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <!-- form  -->
         <form [formGroup]="projectFrom">
           <div class="mb-3">
-            <label  class="form-label">Enter Project Name</label>
+            <label  class="form-label">{{'project.pro-nm' | translate}}</label>
             <input type="text" class="form-control"  aria-describedby="emailHelp"  formControlName="projectname">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Enter Project Details</label>
+            <label for="exampleFormControlTextarea1" class="form-label">{{'project.pro-de' | translate}}</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="projectinfo"></textarea>
           </div>
           <div class="mb-3">
-            <label for="profile" class="form-label">Upload image</label>
+            <label for="profile" class="form-label">{{'project.up' | translate}}</label>
             <input type="file" class="form-control" id="profile" #fileInput>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addProject()">Insert</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addProject()">{{'project.insert' | translate}}</button>
       </div>
     </div>
   </div>
