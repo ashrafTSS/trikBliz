@@ -19,11 +19,13 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { TranslateLoader,TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
 
   imports: [
@@ -36,6 +38,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     MatInputModule,
     HotToastModule.forRoot(),
     HttpClientModule,
+    AngularFireModule,
     TranslateModule.forRoot({
      loader:{
       provide:TranslateLoader,

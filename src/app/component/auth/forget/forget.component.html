@@ -1,0 +1,19 @@
+<div class="form-container mat-elevation-z5">
+  <h1>Forget Passowrd</h1>
+  <form [formGroup]="forgetForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <!-- <label for="">Enter Email</label> -->
+      <input matInput placeholder="Email address" formControlName="email" />
+      <mat-error *ngIf="email?.errors?.['required']">
+        Email address is required
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.['email']">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+    <div class="center margin-top">
+        <button type="submit" mat-raised-button color="primary">Send</button>
+    </div>
+    <span class="center margin-top">Have and account? <a class="sign-up-link" routerLink="/auth/login">Sign in!</a></span>
+  </form>
+</div>

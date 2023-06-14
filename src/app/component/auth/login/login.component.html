@@ -16,9 +16,27 @@
         Password is required
       </mat-error>
     </mat-form-field>
-    <div class="center margin-top">
-        <button type="submit" mat-raised-button color="primary">Login</button>
+    <div>
+      <span class="fgt">Forget Password?  <a class="forget-link  px-2" routerLink="/auth/forget"> Click Here</a> </span>
     </div>
+    <div class="center margin-top">
+      <button type="submit" mat-raised-button color="primary">Login</button>
+  </div>
     <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/auth/register">Sign up!</a></span>
+    <div>
+      <div class="mt-3">
+        <p>OR</p>
+      </div>
+      <span class="center margin-top">Login with social media </span>
+      <div>
+        <ul class="redesSociais">
+          <!-- <li class="pinterest"><a href="https://www.pinterest.com/" target="_blank"><img src="http://i904.photobucket.com/albums/ac243/guilhermehebert/pinterest.png" alt=""/></a></li> -->
+          <li class="facebook "><a href="https://www.facebook.com/" target="_blank"><img src="http://i904.photobucket.com/albums/ac243/guilhermehebert/fb.png" alt=""  class="img"/></a></li>
+          <li class="twitter "><a href="https://www.twitter.com/" target="_blank"><img src="http://i904.photobucket.com/albums/ac243/guilhermehebert/twitter.png" alt="" class="img" /></a></li>
+          <li class="googleplus "><a (click)="signWithGoogle()"><img src="https://static.vecteezy.com/system/resources/previews/016/716/465/non_2x/gmail-icon-free-png.png" alt="" class="img" /></a></li>
+          <!-- <li class="skype"><a href="https://www.skype.com/" target="_blank"><img src="http://i904.photobucket.com/albums/ac243/guilhermehebert/skype.png" alt="" /></a></li> -->
+        </ul>
+      </div>
+    </div>
   </form>
 </div>

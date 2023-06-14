@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth, UserCredential, UserInfo, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 import { Observable, concatMap, from, of, switchMap } from 'rxjs';
+import {GoogleAuthProvider,FacebookAuthProvider,GithubAuthProvider} from '@angular/fire/auth'
+
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +45,7 @@ export class AuthenticationService {
     )
   }
 
+   //forget password
+
 }
+

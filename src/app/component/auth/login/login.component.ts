@@ -56,4 +56,10 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  //signin with google
+  signWithGoogle(){
+this.toast.info("fuck you")
+
+  }
+
 }
