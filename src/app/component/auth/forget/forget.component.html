@@ -1,9 +1,10 @@
 <div class="form-container mat-elevation-z5">
   <h1>Forget Passowrd</h1>
+  <p class="pm-2">Please enter your email address to request a password reset.</p>
   <form [formGroup]="forgetForm" (ngSubmit)="submit()">
     <mat-form-field>
       <!-- <label for="">Enter Email</label> -->
-      <input matInput placeholder="Email address" formControlName="email" />
+      <input matInput placeholder="Enter your email" formControlName="email" />
       <mat-error *ngIf="email?.errors?.['required']">
         Email address is required
       </mat-error>
@@ -12,7 +13,7 @@
       </mat-error>
     </mat-form-field>
     <div class="center margin-top">
-        <button type="submit" mat-raised-button color="primary">Send</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!this.forgetForm.valid">Send</button>
     </div>
     <span class="center margin-top">Have and account? <a class="sign-up-link" routerLink="/auth/login">Sign in!</a></span>
   </form>

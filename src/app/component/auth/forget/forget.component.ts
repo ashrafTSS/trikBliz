@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ForgetComponent implements OnInit {
   });
 
   constructor(private fb:NonNullableFormBuilder,
-    private authService:AuthenticationService){}
+    private authService:AuthenticationService,private toast:HotToastService){}
 
 
   ngOnInit(): void {
@@ -28,7 +29,8 @@ export class ForgetComponent implements OnInit {
   }
 
   submit(){
-    console.log("please send valid email");
-
+    const { email } = this.forgetForm.value;
+    this.authService.forgetPassword(email)
   }
+
 }

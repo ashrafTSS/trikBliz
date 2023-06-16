@@ -14,6 +14,8 @@ export class NavComponent {
 
   //show login's name
   user$ = this.userService.currentUserProfile$
+
+  //translate
   langIcon = 'us.svg';
   language = 'English';
   lang: any;

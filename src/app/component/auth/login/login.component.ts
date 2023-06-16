@@ -58,8 +58,18 @@ export class LoginComponent implements OnInit {
 
   //signin with google
   signWithGoogle(){
-this.toast.info("fuck you")
+   this.authService.loginWithGoogle()
 
   }
+
+//github
+githup(){
+  this.toast.error("there is no access in this account")
+}
+
+//facebook
+facebook(){
+  this.toast.info("welcome to facebook account")
+}
 
 }

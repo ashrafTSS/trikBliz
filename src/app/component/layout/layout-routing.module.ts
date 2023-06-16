@@ -15,8 +15,8 @@ const routes: Routes = [
 {path:'contact',component:ContactComponent},
 {path:'profile',component:ProfileComponent}
 
+]
 
-  ]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
