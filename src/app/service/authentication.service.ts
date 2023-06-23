@@ -98,7 +98,7 @@ export class AuthenticationService {
   //google signin
   loginWithGoogle(): Observable<any>{
     return from(signInWithPopup(this.auth,new GoogleAuthProvider()).then(res =>{
-      this.toast.success('congrats! you have successfully google signin')
+      this.toast.warning('congrats! successfully google signin')
       this.router.navigate(['layout/home'])
       const user = res.user
       this.currentUser = user
@@ -115,7 +115,7 @@ export class AuthenticationService {
   //facebook signin
   loginWithFacebook(){
     return from(signInWithPopup(this.auth,new FacebookAuthProvider).then(res =>{
-      this.toast.success('congrats! you have successfully facebook signin')
+      this.toast.info('congrats! successfully facebook signin')
       this.router.navigate(['layout/home'])
       const user = res.user
       this.currentFace = user

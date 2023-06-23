@@ -78,9 +78,6 @@ console.log('sfhsi45', this.gitUser);
 
   }
 
-
-
-
   //logout
   logout(){
     this.authService.logout()
