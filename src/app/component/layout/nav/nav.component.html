@@ -9,6 +9,8 @@
               <li class="nav-item"><a class="nav-link" routerLink="resume">{{'nav.link2' | translate}}</a></li>
               <li class="nav-item"><a class="nav-link"routerLink="project">{{'nav.link3' | translate}}</a></li>
               <li class="nav-item"><a class="nav-link" routerLink="contact">{{'nav.link4' | translate}}</a></li>
+
+              <!-- user login  -->
                   <ng-container *ngIf="user$ | async as user">
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,19 +24,47 @@
                     </ul>
                   </li>
                 </ng-container>
-                <ng-container >
-                  <ng-container *ngIf="!(user$ | async)">
+
+                  <!-- google login  -->
+                  <ng-container *ngIf="!(user$ | async) && this.currentUser?.emailVerified === true">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img width="30px" height="30px" [src]="currentUser?.photoURL ?? '/assets/image/image-placeholder.png'"
+                        class="prilfe-image-tool" >
+                        {{ currentUser?.displayName }}
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                        <li><a class="dropdown-item" style="font-size: 14px;" (click)="glogout()">Logout</a></li>
+                      </ul>
+                    </li>
+                  </ng-container>
+
+              <!-- facebook login  -->
+              <ng-container *ngIf="!(user$ | async) && this.currentFace?.emailVerified === false">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img width="30px" height="30px" [src]="currentUser?.photoURL"
+                    <img width="30px" height="30px" [src]="currentFace?.photoURL ?? '/assets/image/image-placeholder.png'"
                     class="prilfe-image-tool" >
-                    {{ currentUser?.displayName }}
+                    {{ currentFace?.displayName }}
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                    <li><a class="dropdown-item" style="font-size: 14px;" (click)="glogout()">Logout</a></li>
+                    <li><a class="dropdown-item" style="font-size: 14px;" (click)="faceLogout()">Logout</a></li>
                   </ul>
                 </li>
               </ng-container>
+
+               <!-- github login  -->
+               <ng-container *ngIf="!(user$ | async) && this.gitUser?.emailVerified === false">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img width="30px" height="30px" [src]="gitUser?.photoURL ?? '/assets/image/image-placeholder.png'"
+                    class="prilfe-image-tool" >
+                    {{ gitUser?.displayName }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <li><a class="dropdown-item" style="font-size: 14px;" (click)="faceLogout()">Logout</a></li>
+                  </ul>
+                </li>
               </ng-container>
 
               <!-- ngx-translate  -->

@@ -66,15 +66,12 @@ export class LoginComponent implements OnInit {
 
   //signin with facebook
   signWithFacebook(){
-    this.authService.loginWithFacebook().subscribe((res) =>{
-      console.log(res);
-
-    })
+    this.authService.loginWithFacebook()
   }
 
 //github
-githup(){
-  this.toast.error("there is no access in this account")
+signWithGithub(){
+  this.authService.loginWithGithub()
 }
 
 

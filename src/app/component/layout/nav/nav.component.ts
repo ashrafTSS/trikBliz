@@ -1,5 +1,4 @@
-import { Component} from '@angular/core';
-import { user } from '@angular/fire/auth';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,14 +11,23 @@ import { UserService } from 'src/app/service/user.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
 
   //show login's name
   user$ = this.userService.currentUserProfile$
-  valu : any
-  user1 : any
+
   //google user's display
   currentUser: any;
+
+  //facebook user
+  currentFace :any
+
+  //github user
+  gitUser:any
+
+  //google button
+  isGoogleLogin = false
+  isFacebookLogin = false
 
   //translate
   langIcon = 'us.svg';
@@ -42,8 +50,7 @@ export class NavComponent {
       image: '/assets/image/in.svg',
     },
   ];
-  imageUrl: any;
-  imgUrl: any;
+
 
 
   constructor(public authService:AuthenticationService,
@@ -56,11 +63,22 @@ export class NavComponent {
     }
 
     ngOnInit(){
-//google user
-  this.currentUser = this.authService.currentUser || JSON.parse(localStorage.getItem('user') || "")
-  console.log('sfhsi44', this.currentUser);
 
-    }
+ // facebook user
+ this.currentFace = this.authService.currentFace || JSON.parse(localStorage.getItem('facebook') || 'null');
+ console.log('sfhsi443', this.currentFace);
+
+//google user
+this.currentUser = this.authService.currentUser || JSON.parse(localStorage.getItem('google') || 'null');
+console.log('sfhsi44', this.currentUser);
+
+//github user
+this.gitUser = this.authService.gitUser || JSON.parse(localStorage.getItem('github') || 'null');
+console.log('sfhsi45', this.gitUser);
+
+  }
+
+
 
 
   //logout
@@ -111,7 +129,7 @@ export class NavComponent {
 
   //google logout
   glogout(){
-    localStorage.removeItem('user')
+    localStorage.removeItem('google')
     this.authService
     .googlelogout()
     .pipe(
@@ -127,6 +145,39 @@ export class NavComponent {
 
   }
 
+  //facebook logout
+  faceLogout(){
+    localStorage.removeItem('facebook')
+    this.authService
+    .facebookLogout()
+    .pipe(
+      this.toast.observe({
+        success: 'Logged out successfully',
+        loading: 'Logging in...',
+        error: `There was an error:`
+      })
+    )
+    .subscribe(()=>{
+      this.router.navigate(['/auth/login'])
+    })
+  }
+
+  //github logout
+  githubLogout(){
+    localStorage.removeItem('github')
+    this.authService
+    .githubLogout()
+    .pipe(
+      this.toast.observe({
+        success: 'Logged out successfully',
+        loading: 'Logging in...',
+        error: `There was an error:`
+      })
+    )
+    .subscribe(()=>{
+      this.router.navigate(['/auth/login'])
+    })
+  }
 
 }
 

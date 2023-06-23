@@ -23,10 +23,13 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthenticationService {
+
   users : any
+
   signIn(PROVIDER_ID: string) {
     throw new Error('Method not implemented.');
   }
+
   authState2: any;
   constructor(
     private auth: Auth,
@@ -40,6 +43,12 @@ export class AuthenticationService {
 
   //get google user
   currentUser: any;
+
+  //facebook user
+  currentFace :any
+
+  //github user
+  gitUser:any
 
   //login
   login(username: string, password: string): Observable<any> {
@@ -94,7 +103,7 @@ export class AuthenticationService {
       const user = res.user
       this.currentUser = user
       console.log(res.user);
-      localStorage.setItem('user',JSON.stringify(user))
+      localStorage.setItem('google',JSON.stringify(user));
 
     }, err =>{
         this.toast.error(err.message)
@@ -108,14 +117,16 @@ export class AuthenticationService {
     return from(signInWithPopup(this.auth,new FacebookAuthProvider).then(res =>{
       this.toast.success('congrats! you have successfully facebook signin')
       this.router.navigate(['layout/home'])
-      localStorage.setItem('token',JSON.stringify(res.user.uid))
+      const user = res.user
+      this.currentFace = user
+      console.log(res.user);
+      localStorage.setItem('facebook',JSON.stringify(user));
     }, err =>{
-        //  alert(err.message)
+
         this.toast.error(err.message)
     }))
 
   }
-
 
 
   //google signout
@@ -123,12 +134,31 @@ export class AuthenticationService {
     return from(this.auth.signOut());
   }
 
-  //github signin
-  loginWithGithub(){
-
+  //facebook signout
+  facebookLogout(): Observable<any>{
+    return from(this.auth.signOut())
   }
 
-  //current google user
+
+  //github signin
+  loginWithGithub(){
+    return from(signInWithPopup(this.auth,new GithubAuthProvider).then(res =>{
+      this.toast.success('congrats! you have successfully facebook signin')
+      this.router.navigate(['layout/home'])
+      const user = res.user
+      this.gitUser = user
+      console.log(res.user);
+      localStorage.setItem('github',JSON.stringify(user));
+    }, err =>{
+
+        this.toast.error(err.message)
+    }))
+  }
+
+  //github signout
+  githubLogout():Observable<any>{
+    return from(this.auth.signOut())
+  }
 
 
 }
