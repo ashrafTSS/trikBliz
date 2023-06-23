@@ -54,7 +54,7 @@
               </ng-container>
 
                <!-- github login  -->
-               <ng-container *ngIf="!(user$ | async) && this.gitUser?.emailVerified === false">
+               <ng-container *ngIf="!(user$ | async) && this.gitUser?.isAnonymous === false">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img width="30px" height="30px" [src]="gitUser?.photoURL ?? '/assets/image/image-placeholder.png'"
