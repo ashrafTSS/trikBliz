@@ -1,9 +1,11 @@
 import { Component} from '@angular/core';
+import { user } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/service/authentication.service';
-import { GlobaleventsmanagerService } from 'src/app/service/globaleventsmanager.service';
 import { UserService } from 'src/app/service/user.service';
+
 
 @Component({
   selector: 'app-nav',
@@ -14,6 +16,10 @@ export class NavComponent {
 
   //show login's name
   user$ = this.userService.currentUserProfile$
+  valu : any
+  user1 : any
+  //google user's display
+  currentUser: any;
 
   //translate
   langIcon = 'us.svg';
@@ -36,20 +42,31 @@ export class NavComponent {
       image: '/assets/image/in.svg',
     },
   ];
+  imageUrl: any;
+  imgUrl: any;
+
 
   constructor(public authService:AuthenticationService,
     private router:Router,private userService:UserService,public translate:TranslateService,
-    private globalEvent:GlobaleventsmanagerService){
+    private toast:HotToastService){
 
-
-         //language
-    //  translate.addLangs([ 'en','ar'])
+      //language
      translate.setDefaultLang('en')
+
     }
+
+    ngOnInit(){
+//google user
+  this.currentUser = this.authService.currentUser || JSON.parse(localStorage.getItem('user') || "")
+  console.log('sfhsi44', this.currentUser);
+
+    }
+
 
   //logout
   logout(){
     this.authService.logout()
+    localStorage.removeItem('user')
     this.router.navigate(['auth/login'])
   }
 
@@ -92,6 +109,24 @@ export class NavComponent {
 
   }
 
-}
+  //google logout
+  glogout(){
+    localStorage.removeItem('user')
+    this.authService
+    .googlelogout()
+    .pipe(
+      this.toast.observe({
+        success: 'Logged out successfully',
+        loading: 'Logging in...',
+        error: `There was an error:`
+      })
+    )
+    .subscribe(()=>{
+      this.router.navigate(['/auth/login'])
+    })
 
+  }
+
+
+}
 

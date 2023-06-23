@@ -9,8 +9,8 @@
               <li class="nav-item"><a class="nav-link" routerLink="resume">{{'nav.link2' | translate}}</a></li>
               <li class="nav-item"><a class="nav-link"routerLink="project">{{'nav.link3' | translate}}</a></li>
               <li class="nav-item"><a class="nav-link" routerLink="contact">{{'nav.link4' | translate}}</a></li>
-              <ng-container *ngIf="user$ | async as user" >
-                  <li class="nav-item dropdown"  >
+                  <ng-container *ngIf="user$ | async as user">
+                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <img width="30px" height="30px" [src]="user.photoURL ?? '/assets/image/image-placeholder.png'"
                       class="prilfe-image-tool">
@@ -21,7 +21,22 @@
                       <li><a class="dropdown-item" style="font-size: 14px;"  (click)="onProfile()">Profile</a></li>
                     </ul>
                   </li>
+                </ng-container>
+                <ng-container >
+                  <ng-container *ngIf="!(user$ | async)">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img width="30px" height="30px" [src]="currentUser?.photoURL"
+                    class="prilfe-image-tool" >
+                    {{ currentUser?.displayName }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <li><a class="dropdown-item" style="font-size: 14px;" (click)="glogout()">Logout</a></li>
+                  </ul>
+                </li>
               </ng-container>
+              </ng-container>
+
               <!-- ngx-translate  -->
         <ng-container>
           <ul class="navbar-nav">

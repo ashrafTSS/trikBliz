@@ -9,6 +9,7 @@ import { AuthenticationService } from './authentication.service';
 })
 export class UserService {
 
+  //show current user
   get currentUserProfile$(): Observable<ProfileUser | null> {
     return this.authService.currentUser$.pipe(
       switchMap((user) => {

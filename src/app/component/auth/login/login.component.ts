@@ -11,15 +11,18 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class LoginComponent implements OnInit {
 
+  isLoggedIn = false
+
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
+
   constructor(private fb:NonNullableFormBuilder,
     private authService:AuthenticationService,
     private router:Router,
-    private toast: HotToastService
+    private toast: HotToastService,
 
     ){}
 
@@ -59,7 +62,14 @@ export class LoginComponent implements OnInit {
   //signin with google
   signWithGoogle(){
    this.authService.loginWithGoogle()
+  }
 
+  //signin with facebook
+  signWithFacebook(){
+    this.authService.loginWithFacebook().subscribe((res) =>{
+      console.log(res);
+
+    })
   }
 
 //github
@@ -67,9 +77,5 @@ githup(){
   this.toast.error("there is no access in this account")
 }
 
-//facebook
-facebook(){
-  this.toast.info("welcome to facebook account")
-}
 
 }

@@ -23,14 +23,23 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthenticationService {
+  users : any
+  signIn(PROVIDER_ID: string) {
+    throw new Error('Method not implemented.');
+  }
+  authState2: any;
   constructor(
     private auth: Auth,
     private toast: HotToastService,
-    private router:Router
+    private router:Router,
+
   ) {}
 
   //get current user
   currentUser$ = authState(this.auth);
+
+  //get google user
+  currentUser: any;
 
   //login
   login(username: string, password: string): Observable<any> {
@@ -78,19 +87,48 @@ export class AuthenticationService {
   }
 
   //google signin
-  loginWithGoogle(){
+  loginWithGoogle(): Observable<any>{
     return from(signInWithPopup(this.auth,new GoogleAuthProvider()).then(res =>{
+      this.toast.success('congrats! you have successfully google signin')
       this.router.navigate(['layout/home'])
-      localStorage.setItem('token',JSON.stringify(res.user.uid))
+      const user = res.user
+      this.currentUser = user
+      console.log(res.user);
+      localStorage.setItem('user',JSON.stringify(user))
+
     }, err =>{
-         alert(err.message)
+        this.toast.error(err.message)
     }))
 
   }
 
+
   //facebook signin
   loginWithFacebook(){
+    return from(signInWithPopup(this.auth,new FacebookAuthProvider).then(res =>{
+      this.toast.success('congrats! you have successfully facebook signin')
+      this.router.navigate(['layout/home'])
+      localStorage.setItem('token',JSON.stringify(res.user.uid))
+    }, err =>{
+        //  alert(err.message)
+        this.toast.error(err.message)
+    }))
 
   }
+
+
+
+  //google signout
+  googlelogout(): Observable<any> {
+    return from(this.auth.signOut());
+  }
+
+  //github signin
+  loginWithGithub(){
+
+  }
+
+  //current google user
+
 
 }
