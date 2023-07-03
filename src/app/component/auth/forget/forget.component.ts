@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 
@@ -16,7 +17,7 @@ export class ForgetComponent implements OnInit {
   });
 
   constructor(private fb:NonNullableFormBuilder,
-    private authService:AuthenticationService,private toast:HotToastService){}
+    private authService:AuthenticationService,private toast:HotToastService,private router:Router){}
 
 
   ngOnInit(): void {
@@ -31,6 +32,10 @@ export class ForgetComponent implements OnInit {
   submit(){
     const { email } = this.forgetForm.value;
     this.authService.forgetPassword(email)
+    setTimeout(() => {
+      this.router.navigate(['auth/login'])
+    },5000);
+
   }
 
 }

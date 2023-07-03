@@ -102,7 +102,7 @@ export class AuthenticationService {
       this.router.navigate(['layout/home'])
       const user = res.user
       this.currentUser = user
-      console.log(res.user);
+      // console.log(res.user);
       localStorage.setItem('google',JSON.stringify(user));
 
     }, err =>{
@@ -119,7 +119,7 @@ export class AuthenticationService {
       this.router.navigate(['layout/home'])
       const user = res.user
       this.currentFace = user
-      console.log(res.user);
+      // console.log(res.user);
       localStorage.setItem('facebook',JSON.stringify(user));
     }, err =>{
 
@@ -143,11 +143,11 @@ export class AuthenticationService {
   //github signin
   loginWithGithub(){
     return from(signInWithPopup(this.auth,new GithubAuthProvider).then(res =>{
-      this.toast.success('congrats! you have successfully facebook signin')
+      this.toast.success('congrats! you have successfully github signin')
       this.router.navigate(['layout/home'])
       const user = res.user
       this.gitUser = user
-      console.log(res.user);
+      // console.log(res.user);
       localStorage.setItem('github',JSON.stringify(user));
     }, err =>{
 

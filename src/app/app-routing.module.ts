@@ -9,7 +9,7 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['auth/login'])
 const redirectLoggedInToHome = () => redirectLoggedInTo(['layout/home']);
 const routes: Routes = [
   {path:'',redirectTo:'auth/login',pathMatch:'full'},
-  {path:'auth',component:AuthComponent,
+  {path:'auth',component:AuthComponent,...canActivate(redirectLoggedInToHome),
   loadChildren:()=> import('./component/auth/auth/auth.module').then((a) => a.AuthModule)},
 
   {path:'layout',component:LayoutComponent, ...canActivate(redirectUnauthorizedToLogin),
