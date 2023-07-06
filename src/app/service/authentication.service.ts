@@ -52,7 +52,7 @@ export class AuthenticationService {
 
   //login
   login(username: string, password: string): Observable<any> {
-    return from(signInWithEmailAndPassword(this.auth, username, password));
+    return from(signInWithEmailAndPassword(this.auth, username, password))
   }
 
   //loggeddIn

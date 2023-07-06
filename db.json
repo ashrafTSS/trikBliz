@@ -1,5 +1,12 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "projectname": "ANGULAR FEATURES",
+      "projectinfo": "Angular supports you with an opinionated platform as your team and apps grow. This allows you to build testable, and scalable user interfaces that perform well as they grow.",
+      "profile": "angular-framework-ecosystem.png",
+      "id": 1
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"
